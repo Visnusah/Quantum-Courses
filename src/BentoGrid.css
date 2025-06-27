@@ -1,0 +1,249 @@
+.BentoGridContainer {
+  padding: 60px 20px;
+  background-color: #FFFFFF; /* Pure White background for light theme */
+  color: #333333;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.App.light-mode .BentoGridContainer {
+  background-color: #0A0A1A;
+  color: #E0E0FF;
+}
+
+.BentoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.BentoItem {
+  background-color: #F8F8F8; /* Light grey for items in white theme */
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Light, premium shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s ease; /* Smooth transitions for all properties */
+  border: 1px solid #E8E8E8; /* Very subtle border */
+  position: relative;
+  overflow: hidden;
+  animation: card-float 6s infinite ease-in-out alternate; /* Continuous floating animation */
+}
+
+.App.light-mode .BentoItem {
+  background-color: #1A1A3A; /* Darker blue-purple for items in dark mode */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-color: #2A2A5A;
+}
+
+.BentoItem:nth-child(odd) { animation-delay: 0s; }
+.BentoItem:nth-child(even) { animation-delay: 0.5s; }
+
+.BentoItem:hover {
+  transform: translateY(-15px) scale(1.05); /* More pronounced lift and scale on hover */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); /* Even stronger shadow on hover */
+  background-color: #F0F0F0; /* Slightly darker on hover */
+  border-color: #007BFF; /* Professional blue border on hover */
+}
+
+.App.light-mode .BentoItem:hover {
+  background-color: #2A2A4A;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  border-color: #3498DB;
+}
+
+.BentoItem h2,
+.BentoItem h3 {
+  color: #222222; /* Strong dark for headings */
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  text-shadow: none;
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.App.light-mode .BentoItem h2,
+.App.light-mode .BentoItem h3 {
+  color: #3498DB; /* Bright blue for dark mode headings */
+  text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.BentoItem p {
+  color: #555555;
+  line-height: 1.7;
+  font-size: 1.1em;
+  transition: color 0.5s ease;
+}
+
+.App.light-mode .BentoItem p {
+  color: #B0B0D0;
+}
+
+/* Floating elements within bento items (subtle) */
+.BentoItem::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 123, 255, 0.05); /* Very subtle blue glow */
+  border-radius: 50%;
+  top: -20px;
+  left: -20px;
+  filter: blur(20px);
+  animation: item-float 8s infinite ease-in-out alternate;
+  z-index: 0;
+  transition: background 0.5s ease;
+}
+
+.App.light-mode .BentoItem::before {
+  background: rgba(155, 89, 182, 0.1); /* Purple glow for dark mode */
+}
+
+.BentoItem:nth-child(even)::before {
+  background: rgba(106, 90, 205, 0.05); /* Very subtle purple glow for even items */
+  top: auto;
+  bottom: -20px;
+  left: auto;
+  right: -20px;
+  animation-delay: 1s;
+}
+
+.App.light-mode .BentoItem:nth-child(even)::before {
+  background: rgba(52, 152, 219, 0.1); /* Blue glow for dark mode */
+}
+
+@keyframes item-float {
+  0% { transform: translate(0, 0); opacity: 0.6; }
+  50% { transform: translate(10px, -10px); opacity: 0.8; }
+  100% { transform: translate(0, 0); opacity: 0.6; }
+}
+
+@keyframes card-float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Specific styles for different bento items to create visual variety */
+.FeatureItem {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.TestimonialItem {
+  grid-column: span 2;
+  background-color: #F0F0F0; /* Slightly different background for testimonials */
+  border: 1px solid #E0E0E0;
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.App.light-mode .TestimonialItem {
+  background-color: #0F0F2F;
+  border-color: #3A3A6A;
+}
+
+.CallToActionBox {
+  grid-column: span 2;
+  background: linear-gradient(45deg, #007BFF, #6A5ACD); /* Blue-purple gradient for CTA box */
+  color: white;
+  padding: 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.App.light-mode .CallToActionBox {
+  background: linear-gradient(45deg, #3498DB, #9B59B6);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.CallToActionBox h2 {
+  color: white;
+  text-shadow: none;
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.App.light-mode .CallToActionBox h2 {
+  color: white;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+.CallToActionSecondary {
+  background-color: white;
+  color: #007BFF; /* Blue text on white button */
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.App.light-mode .CallToActionSecondary {
+  color: #9B59B6;
+}
+
+.CallToActionSecondary:hover {
+  background-color: #E0E0E0;
+  color: #0056B3; /* Darker blue on hover */
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.App.light-mode .CallToActionSecondary:hover {
+  color: #7D3C98;
+}
+
+@media (min-width: 768px) {
+  .BentoGrid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on larger screens */
+  }
+
+  .FeatureItem {
+    grid-column: span 1;
+  }
+
+  .TestimonialItem {
+    grid-column: span 2;
+  }
+
+  .CallToActionBox {
+    grid-column: span 4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Feature1 {
+    grid-column: span 2;
+  }
+
+  .Feature2 {
+    grid-column: span 1;
+  }
+
+  .Feature3 {
+    grid-column: span 1;
+  }
+
+  .Feature4 {
+    grid-column: span 2;
+  }
+
+  .Testimonial1 {
+    grid-column: span 2;
+  }
+
+  .Testimonial2 {
+    grid-column: span 2;
+  }
+
+  .CallToActionBox {
+    grid-column: span 4;
+  }
+}
